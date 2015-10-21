@@ -1,0 +1,48 @@
+<configuration>
+
+    <property>
+        <name>hive.exec.compress.output</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>mapred.output.compression.codec</name>
+        <value>org.apache.hadoop.io.compress.SnappyCodec</value>
+    </property>
+    <property>
+        <name>mapred.output.compression.type</name>
+        <value>BLOCK</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionURL</name>
+        <value>jdbc:mysql://localhost:3306/hive?createDatabaseIfNotExist=true</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionDriverName</name>
+        <value>com.mysql.jdbc.Driver</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionUserName</name>
+        <value>hive</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionPassword</name>
+        <value>hive</value>
+    </property>
+    <property>
+        <name>hive.metastore.warehouse.dir</name>
+        <value>hdfs://localhost:9000/user/hive/warehouse</value>
+    </property>
+    <property>
+        <name>hive.exec.local.scratchdir</name>
+        <value>/opt/hive/logs/${user.name}</value>
+        <description>Local scratch space for Hive jobs</description>
+    </property>
+    <property>
+        <name>hive.querylog.location</name>
+        <value>/opt/hive/logs/${user.name}</value>
+        <description>
+            Location of Hive run time structured log file
+        </description>
+    </property>
+</configuration>
+

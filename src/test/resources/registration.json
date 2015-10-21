@@ -1,0 +1,4 @@
+{"teacherId":1, "studentId":1235, "className":"math", "score":80}
+{"teacherId":1, "studentId":1235, "className":"english", "score":60}
+{"teacherId":2, "studentId":1236, "className":"math", "score":70}
+{"teacherId":2, "studentId":1236, "className":"english", "score":80}
