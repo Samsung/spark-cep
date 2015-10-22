@@ -39,12 +39,12 @@ class WindowedStateDStream[K: ClassTag, V: ClassTag, S: ClassTag]
   extends DStream[(K, S)](parent.context) {
 
   require(_windowDuration.isMultipleOf(parent.slideDuration),
-    "The window duration of ReducedWindowedDStream (" + _windowDuration + ") " +
+    "The window duration of WindowedStateDStream (" + _windowDuration + ") " +
       "must be multiple of the slide duration of parent DStream (" + parent.slideDuration + ")"
   )
 
   require(_slideDuration.isMultipleOf(parent.slideDuration),
-    "The slide duration of ReducedWindowedDStream (" + _slideDuration + ") " +
+    "The slide duration of WindowedStateDStream (" + _slideDuration + ") " +
       "must be multiple of the slide duration of parent DStream (" + parent.slideDuration + ")"
   )
 
