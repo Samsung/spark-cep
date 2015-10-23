@@ -1,9 +1,9 @@
 # Spark CEP
-Spark CEP is a stream processing engine for Apache Spark with built-in continuous query language.
-
-In the absence of SQL-like query engine for streams and the lack of fundamental functionality in alternatives which is based on the conjunction of Spark Streaming and Spark SQL, needs for stream processing engine along proper supports to the stream come to the fore.
-
-
+Spark CEP is a stream processing engine on top of Apache Spark supporting continuous query language.
+It has following improvements comparing to the existing Spark Streaming query engines.
+* Support more efficient windowed aggregation.
+* Support "Insert Into" query.
+ 
 ##Quick Start
 
 ###Creating StreamSQLContext
@@ -141,9 +141,9 @@ To use Spark CEP, put the packaged jar into your environment where Spark could a
 ```
 
 There are few arguments being passed to the Spark CEP job.
-First, it requires zookeeper url(`kafka.zookeeper.quorum`) for consuming stream from Kafka.
+First, it requires zookeeper url (`kafka.zookeeper.quorum`) for consuming stream from Kafka.
 Since it stores the result within a window to redis, it also requires Redis connection information.
-You can pass continuous query against a Kafka topic(`stream_test`).
+You can pass continuous query against a Kafka topic (`stream_test`).
 
 If you want to contribute our project, please refer to [Governance](https://github.com/samsung/spark-cep/wiki/Governance)
 ___
