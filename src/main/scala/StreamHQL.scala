@@ -92,6 +92,7 @@ object StreamHQL {
 
     removeConsumerGroup(confMap("kafka.zookeeper.quorum"), qid)
     val result = streamSqlContext.sql(query)
+    val schema = result.schema
 
     result.foreachRDD((rdd, time) => {
       rdd.foreachPartition(partition => {
@@ -99,7 +100,7 @@ object StreamHQL {
         val jedis = Redis.manager.getResource
         val pipe = jedis.pipelined
         partition.foreach(record => {
-          val seq = record.toSeq(result.schema)
+          val seq = record.toSeq(schema)
           val ts = time.milliseconds / 1000
           val hkey = seq.take(seq.size - 1).mkString(".")
           pipe.hset(qid + "." + ts, hkey, seq(seq.size - 1).toString)
