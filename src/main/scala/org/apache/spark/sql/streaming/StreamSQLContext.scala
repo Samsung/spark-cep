@@ -134,10 +134,10 @@ class StreamSQLContext(
    * Execute a command or DDL query and directly get the result (depending on the side effect of
    * this command).
    */
-  def command(sqlText: String): String = {
+  def command(sqlText: String): Unit = {
     SparkPlan.currentContext.set(sqlContext)
     StreamPlan.currentContext.set(this)
-    sqlContext.sql(sqlText).collect().map(_.toString()).mkString("\n")
+    sqlText.split(";").map(_.trim).filter(_.nonEmpty).foreach(sqlContext.sql(_).collect())
   }
 
   /**
