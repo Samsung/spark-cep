@@ -4,9 +4,9 @@ It has following improvements comparing to the existing Spark Streaming query en
 * Support more efficient windowed aggregation.
 * Support "Insert Into" query.
  
-##Quick Start
+## Quick Start
 
-###Creating StreamSQLContext
+### Creating StreamSQLContext
 
 StreamSQLContext is the main entry point for all streaming sql related functionalities. StreamSQLContext can be created by:
 
@@ -26,7 +26,7 @@ val hiveContext: HiveContext
 val streamSqlContext = new StreamSQLContext(ssc, hiveContext)
 ```
 
-###Running SQL on DStreams
+### Running SQL on DStreams
     
 ```scala
 case class Person(name: String, age: String)
@@ -48,7 +48,7 @@ ssc.awaitTerminationOrTimeout(30 * 1000)
 ssc.stop()
 ```
 
-###Stream Relation Join
+### Stream Relation Join
 
 ```scala    
 val userStream: DStream[User]
@@ -64,7 +64,7 @@ historyItem.registerTempTable("history")
 sql("SELECT * FROM user JOIN item ON user.id = history.id").print()
 ```
 
-###Time Based Windowing Join/Aggregation
+### Time Based Windowing Join/Aggregation
 
 ```scala
 sql(
@@ -87,7 +87,7 @@ sql(
 
 Note: For time-based windowing join, the sliding size should be same for all the joined streams. This is the limitation of Spark Streaming.
 
-###External Source API Support for Kafka
+### External Source API Support for Kafka
 
 ```scala
 streamSqlContext.command(
@@ -106,7 +106,7 @@ streamSqlContext.command(
       """.stripMargin)
 ```
 
-###How to Build and Deploy
+### How to Build and Deploy
 
 Spark CEP is built with sbt, you could use sbt related commands to test/compile/package.
 
@@ -115,7 +115,7 @@ Spark CEP is built on >= Spark-1.5, you could change the Spark version in Build.
 To use Spark CEP, put the packaged jar into your environment where Spark could access, you could use spark-submit --jars or other ways.
 
 
-####Spark CEP job submission sample
+#### Spark CEP job submission sample
 
 ```bash
 {$SPARK_HOME}/bin/spark-submit \
